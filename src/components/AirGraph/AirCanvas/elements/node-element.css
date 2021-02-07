@@ -10,6 +10,28 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
 }
 
+@keyframes rotating {
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.spin {
+  animation: rotating 1s linear infinite;
+  color: #1890ff;
+}
+
+.hide {
+  display: none !important;
+}
+
+.error {
+  color: #d61b3a;
+}
+
 .nodeElement.selected,
 .nodeElement:hover {
   background-color: rgba(243, 249, 255, 0.92);

@@ -1,23 +1,18 @@
 import {maxBy, minBy} from 'lodash-es'
-import {NExperimentGraph} from '@/pages/rx-models/typing'
 
-interface BasicPoint {
-  x: number
-  y: number
-}
 
 /**
  * 找出一组坐标的边缘坐标（最小和最大的边缘坐标轴）和中点
  * @param points
  */
-export function calcPointsInfo(points: BasicPoint[]) {
+export function calcPointsInfo(points) {
   if (!Array.isArray(points) || !points.length) {
     throw new Error('计算坐标边缘必须传入一组坐标')
   }
-  const minX = minBy(points, (point: BasicPoint) => point.x)!.x
-  const minY = minBy(points, (point: BasicPoint) => point.y)!.y
-  const maxX = maxBy(points, (point: BasicPoint) => point.x)!.x
-  const maxY = maxBy(points, (point: BasicPoint) => point.y)!.y
+  const minX = minBy(points, (point) => point.x).x
+  const minY = minBy(points, (point) => point.y).y
+  const maxX = maxBy(points, (point) => point.x).x
+  const maxY = maxBy(points, (point) => point.y).y
   const middleX = (minX + maxX) / 2
   const middleY = (minY + maxY) / 2
 
@@ -37,9 +32,9 @@ export function calcPointsInfo(points: BasicPoint[]) {
  * @param origin
  */
 export function transformPointsToOrigin(
-  points: BasicPoint[],
-  origin: BasicPoint,
-): BasicPoint[] {
+  points,
+  origin,
+) {
   return points.map((point) => ({
     ...point,
     x: point.x - origin.x,
@@ -53,9 +48,9 @@ export function transformPointsToOrigin(
  * @param origin
  */
 export function revertPointsToOrigin(
-  points: BasicPoint[],
-  origin: BasicPoint,
-): BasicPoint[] {
+  points,
+  origin,
+) {
   return points.map((point) => ({
     ...point,
     x: point.x + origin.x,
@@ -63,18 +58,13 @@ export function revertPointsToOrigin(
   }))
 }
 
-export function formatNodeToGraphNodeConf(originNode: {
-  id: number
-  nodeInstanceId?: number
-  positionX: number
-  positionY: number
-}): any {
+export function formatNodeToGraphNodeConf(originNode) {
   const {id, nodeInstanceId, positionX, positionY} = originNode
   return {
     ...originNode,
     x: positionX || 0,
     y: positionY || 0,
-    id: (nodeInstanceId || id)!.toString(),
+    id: (nodeInstanceId || id).toString(),
     width: 180,
     height: 32,
     data: originNode,
@@ -133,13 +123,13 @@ export function formatNodeToGraphNodeConf(originNode: {
  * 将实验图节点信息转换为节点和边的配置
  * @param graph
  */
-export function formatExperimentGraph(graph: any = {}) {
+export function formatExperimentGraph(graph) {
   const {nodes = [], links = [], groups = []} = graph
-  const formattedNodes = nodes.map((node: any) =>
+  const formattedNodes = nodes.map((node) =>
     formatNodeToGraphNodeConf(node),
   )
 
-  const formattedEdges = links.map((link: any) => {
+  const formattedEdges = links.map((link) => {
     const {source, target} = link
     return {
       ...link,
@@ -150,13 +140,13 @@ export function formatExperimentGraph(graph: any = {}) {
   })
 
   const groupNodeMap = groups.reduce(
-    (mapResult: any, currentGroup: NExperimentGraph.Group) => {
+    (mapResult, currentGroup) => {
       const {id} = currentGroup
       return {
         ...mapResult,
         [id]:
         formattedNodes.filter(
-          (node: any) => node.groupId.toString() === id.toString(),
+          (node) => node.groupId.toString() === id.toString(),
         ) || [],
       }
     },

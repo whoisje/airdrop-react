@@ -38,6 +38,7 @@ export const EdgeContextMenu = (props) => {
       className={classes.root}
       style={{top, left}}
     >
+      {{top, left}}
       <Menu open={true}>
         <MenuItem onClick={onDeleteEdge}>
           <ListItemIcon>
