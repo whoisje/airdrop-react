@@ -1,0 +1,55 @@
+.canvasToolbar {
+  background-color: #f7f9fb;
+}
+
+.canvasToolbar .searchItem:hover {
+  background-color: transparent !important;
+}
+
+.canvasToolbar .searchItem .searchWrapper {
+  position: relative;
+}
+
+.canvasToolbar .searchItem .searchWrapper .search {
+  width: 200px;
+  background-color: transparent;
+  animation: expansion 0.2s ease-in-out;
+}
+
+@keyframes expansion {
+  from {
+    width: 0;
+  }
+  to {
+    width: 200px;
+  }
+}
+
+.canvasToolbar .searchItem .searchWrapper .searchResult {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  width: 200px;
+  max-height: 200px;
+  padding: 4px 0;
+  overflow-y: auto;
+  color: rgba(0, 0, 0, 0.65);
+  list-style-type: none;
+  background-color: #fefefe;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.canvasToolbar .searchItem .searchWrapper .searchResult.hide {
+  display: none;
+}
+
+.canvasToolbar .searchItem .searchWrapper .searchResult .searchResultItem {
+  padding: 0 8px;
+  line-height: 24px;
+  text-align: left;
+}
+
+.canvasToolbar .searchItem .searchWrapper .searchResult .searchResultItem:hover {
+  background-color: rgba(243, 249, 255, 0.92);
+}

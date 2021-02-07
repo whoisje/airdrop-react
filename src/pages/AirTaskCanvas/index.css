@@ -1,0 +1,53 @@
+.flex {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.layout {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  max-height: calc(52vh);
+  font-size: 12px;
+}
+
+.experiment {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.experiment .nodeSourceTree {
+  flex-basis: 290px;
+  width: 290px;
+  max-height: calc(52vh);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.experiment .editPanel {
+  display: flex;
+  flex-grow: 1;
+  align-items: stretch;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.experiment .editPanel .dagCanvas {
+  flex-grow: 1;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.experiment .editPanel .confPanel {
+  width: 290px;
+  min-width: 290px;
+}
+

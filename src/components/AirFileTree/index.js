@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: 800,
     flexGrow: 1,
-    padding: theme.spacing(0.5)
+    padding: theme.spacing(1)
   },
 }));
 

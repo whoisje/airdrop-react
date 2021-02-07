@@ -1,0 +1,65 @@
+.dagContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 800px;
+  padding-bottom: 40px;
+}
+
+.dagContainer .canvasContent {
+  flex-grow: 1;
+}
+
+:global .x6-edge {
+  stroke-width: 1px;
+}
+
+:global .x6-edge.success path:nth-child(2) {
+  stroke: #888 !important;
+}
+
+:global .x6-edge.success path:nth-child(3) {
+  fill: #888 !important;
+  stroke: #888 !important;
+}
+
+:global .x6-edge.error {
+  stroke-width: 2px;
+}
+
+:global .x6-edge.error path:nth-child(2) {
+  stroke: rgba(245, 34, 45, 0.45) !important;
+  stroke-width: 2px;
+}
+
+:global .x6-edge.edgeProcessing path:nth-child(2) {
+  stroke: rgba(57, 202, 116, 0.8);
+  stroke-width: 2px;
+  stroke-dasharray: 8px, 2px;
+}
+
+:global .x6-edge.edgeProcessing path:nth-child(2):local {
+  animation: processing-line 30s infinite linear;
+}
+
+@keyframes processing-line {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+:global .x6-split-box-horizontal > .x6-split-box-resizer,
+:global .x6-split-box-vertical > .x6-split-box-resizer {
+  background: #e9e9e9;
+}
+
+:global .x6-widget-selection-inner {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+:global .x6-widget-selection-box {
+  border: none !important;
+  box-shadow: none !important;
+}
